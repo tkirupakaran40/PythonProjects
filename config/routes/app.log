@@ -2,3 +2,25 @@
 2024-11-03 01:08:32,841 - INFO - This is a debug message.
 2024-11-03 02:13:24,122 - INFO - This is a debug message.
 2024-11-03 02:14:06,538 - INFO - This is a debug message.
+2024-11-03 08:55:54,920 - INFO - This is a debug message.
+2024-11-03 10:37:36,747 - INFO - This is a debug message.
+2024-11-03 10:43:44,533 - INFO - This is a debug message.
+2024-11-03 10:44:10,327 - INFO - This is a debug message.
+2024-11-03 11:55:45,072 - INFO - SELECT DATABASE()
+2024-11-03 11:55:45,072 - INFO - [raw sql] ()
+2024-11-03 11:55:45,076 - INFO - SELECT @@sql_mode
+2024-11-03 11:55:45,076 - INFO - [raw sql] ()
+2024-11-03 11:55:45,076 - INFO - SELECT @@lower_case_table_names
+2024-11-03 11:55:45,076 - INFO - [raw sql] ()
+2024-11-03 11:55:45,078 - INFO - BEGIN (implicit)
+2024-11-03 11:55:45,084 - INFO - SELECT vehicles.vin AS vehicles_vin, vehicles.vehicle_brand AS vehicles_vehicle_brand, vehicles.vehicle_model AS vehicles_vehicle_model, vehicles.vehicle_colour AS vehicles_vehicle_colour, vehicles.vehicle_price AS vehicles_vehicle_price, vehicles.vehicle_registered_country AS vehicles_vehicle_registered_country, vehicles.vehicle_registered_number AS vehicles_vehicle_registered_number, vehicles.`vehicle_owner_firstName` AS `vehicles_vehicle_owner_firstName`, vehicles.`vehicle_owner_lastName` AS `vehicles_vehicle_owner_lastName`, vehicles.`vehicle_owner_phoneNumber` AS `vehicles_vehicle_owner_phoneNumber` 
+FROM vehicles 
+WHERE vehicles.vin = %s
+2024-11-03 11:55:45,084 - INFO - [generated in 0.00046s] ('3FAHP0HA5AR123456',)
+2024-11-03 11:55:45,093 - INFO - COMMIT
+2024-11-03 12:44:53,381 - INFO - BEGIN (implicit)
+2024-11-03 12:44:53,386 - INFO - SELECT vehicles.vin AS vehicles_vin, vehicles.vehicle_brand AS vehicles_vehicle_brand, vehicles.vehicle_model AS vehicles_vehicle_model, vehicles.vehicle_colour AS vehicles_vehicle_colour, vehicles.vehicle_price AS vehicles_vehicle_price, vehicles.vehicle_registered_country AS vehicles_vehicle_registered_country, vehicles.vehicle_registered_number AS vehicles_vehicle_registered_number, vehicles.`vehicle_owner_firstName` AS `vehicles_vehicle_owner_firstName`, vehicles.`vehicle_owner_lastName` AS `vehicles_vehicle_owner_lastName`, vehicles.`vehicle_owner_phoneNumber` AS `vehicles_vehicle_owner_phoneNumber` 
+FROM vehicles 
+WHERE vehicles.vin = %s
+2024-11-03 12:44:53,386 - INFO - [cached since 112s ago] ('1G1BC5SM7JZ123456',)
+2024-11-03 12:44:53,439 - INFO - COMMIT

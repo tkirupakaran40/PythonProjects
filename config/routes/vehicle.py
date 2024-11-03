@@ -1,10 +1,14 @@
-from fastapi import APIRouter
-from config.db import conn
-from config.models.index import vehicles
+from typing import AsyncGenerator
+from fastapi import APIRouter, Depends, HTTPException
+from config.db import get_session
+#from config.models.index import vehicles
+from config.models.vehicle import Vehicle
 from config.schemas.index import vehicleSchema
 import logging
 import os
 from sqlalchemy import create_engine, Table, MetaData, select
+from sqlalchemy.ext.asyncio import AsyncSession
+
 
 vehicle = APIRouter()
 
@@ -18,12 +22,28 @@ logging.basicConfig(
 )
 
 
+@vehicle.get("/vehicles/{vin}")
+async def get_vehicle(vin: str, session: AsyncSession = Depends(get_session)):
+    async with session.begin():
+        vehicle = await session.get(Vehicle, vin)
+        if not vehicle:
+            raise HTTPException(status_code=404, detail="Vehicle not found")
+        return vehicle
+
+'''
+@vehicle.get("/")
+async def fetch_data():
+    #result = conn.execute(vehicles.select()).fetchall
+    result = conn.execute(select(vehicles)).fetchall
+    logging.info("This is a debug message.")
+    return result
+
 @vehicle.get("/getVehicle")
 async def fetch_data():
-    result = conn.execute(vehicles.select()).fetchall
-    #result = conn.execute(select(vehicles)).fetchall
+    #result = conn.execute(vehicles.select()).fetchall
+    result = conn.execute(select(vehicles)).fetchall
     logging.info("This is a debug message.")
-    return result  # Converting each row to a dictionary
+    return result
     
      
 
@@ -76,3 +96,4 @@ async def delete_data(vin:str):
     return conn.execute(vehicles.select()).fetchall
 
 
+'''

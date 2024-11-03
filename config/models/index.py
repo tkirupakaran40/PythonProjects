@@ -1,2 +1,2 @@
 
-from config.models.vehicle import vehicles
+from config.models.vehicle import Vehicle

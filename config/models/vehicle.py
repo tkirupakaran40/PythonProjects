@@ -1,19 +1,27 @@
-from sqlalchemy import Table, Column, String
-from config.db import meta
+from sqlalchemy import Table, Column, String, Float, create_engine
 
-vehicles = Table(
-    'vehicles', meta,
-    Column('vin', String(255), primary_key=True),
-    Column('vehicle_brand', String(255)),
-    Column('vehicle_model', String(255)),
-    Column('vehicle_colour', String(255)),
-    Column('vehicle_price', String(255)),
-    Column('vehicle_registered_country', String(255)),
-    Column('vehicle_registered_number', String(255)),
-    Column('vehicle_owner_firstName', String(255)),
-    Column('vehicle_owner_lastName', String(255)),
-    Column('vehicle_owner_phoneNumber', String(255))
+#from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
 
-)
+Base = declarative_base()
+
+class Vehicle(Base):
+    __tablename__ = 'vehicles'
+
+    vin = Column(String(255), primary_key=True)
+    vehicle_brand = Column(String(255))
+    vehicle_model = Column(String(255))
+    vehicle_colour = Column(String(255))
+    vehicle_price = Column(Float)
+    vehicle_registered_country = Column(String(255))
+    vehicle_registered_number = Column(String(255))
+    vehicle_owner_firstName = Column(String(255))
+    vehicle_owner_lastName = Column(String(255))
+    vehicle_owner_phoneNumber = Column(String(255))
+    
+    
+
+
 
 
