@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import create_engine, MetaData, Select
 
 DATABASE_USERNAME = "root"
 DATABASE_PASSWORD = "root1234"  # Replace with your actual password
@@ -13,6 +13,7 @@ engine = create_engine(f"mysql+pymysql://{DATABASE_USERNAME}:{DATABASE_PASSWORD}
 
 meta = MetaData()
 conn = engine.connect()
+
 
 
 
